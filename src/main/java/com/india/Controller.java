@@ -10,6 +10,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,7 +62,21 @@ public class Controller {
     	map.addAttribute("books", books);
         return (books);
 	}
+	 @GetMapping("/user")
+	    public String user() {
+	        return ("<h1>Welcome User</h1>");
+	    }
 
+	
+	    @RequestMapping(value = "/helloAdmin", method = RequestMethod.GET)
+		public Map<String, String> helloAdmin(Model map) {
+			Map<String, String> books = new HashMap<String, String>();
+			books.put("Hello Admin", "admin");
+			books.put("JWT security ", "JPA");
+			books.put("Hibernate", "Red Hat");
+	    	map.addAttribute("books", books);
+	        return (books);
+		}
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
