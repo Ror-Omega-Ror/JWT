@@ -66,7 +66,10 @@ public class Controller {
 	    public String user() {
 	        return ("<h1>Welcome User</h1>");
 	    }
-
+	 @GetMapping("/admin")
+	    public String admin() {
+	        return ("<h1>Welcome Admin</h1>");
+	    }
 	
 	    @RequestMapping(value = "/helloAdmin", method = RequestMethod.GET)
 		public Map<String, String> helloAdmin(Model map) {
